@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Cliques</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 { color: #333; }
+        p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #incrementButton { background: #28a745; color: white; }
+        #resetButton { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contador de Cliques</h1>
+        <p id="counter">0</p>
+        <button id="incrementButton">Clique aqui</button>
+        <button id="resetButton">Resetar</button>
+    </div>
+    
+
+    <script>
+   // script.js
+// Recupera o valor do contador salvo no localStorage
+let count = localStorage.getItem("clickCount") ? parseInt(localStorage.getItem("clickCount")) : 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const counterElement = document.getElementById("counter");
+    const button = document.getElementById("incrementButton");
+    const resetButton = document.getElementById("resetButton");
+
+    // Atualiza a interface com o valor salvo
+    counterElement.innerText = count;
+
+    // Incrementa o contador
+    button.addEventListener("click", () => {
+        count++;
+        counterElement.innerText = count;
+        localStorage.setItem("clickCount", count);
+    });
+
+    // Reseta o contador
+    resetButton.addEventListener("click", () => {
+        count = 0;
+        counterElement.innerText = count;
+        localStorage.setItem("clickCount", count);
+    });
+});
+
+    </script>
+
+</body>
+</html>
